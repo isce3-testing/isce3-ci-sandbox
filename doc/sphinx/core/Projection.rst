@@ -15,14 +15,14 @@ Factory
 
 .. code-block:: python
 
-   from isce3.core import projection
+   from isce3.core import make_projection
 
-   obj = epsg(**kwds)
+   obj = make_projection(epsg)
 
 
 Documentation
 ----------------
 
-.. autoclass:: isce3.core.Projection.Projection
+.. autoclass:: isce3.core.ProjectionBase
    :members:
    :inherited-members:

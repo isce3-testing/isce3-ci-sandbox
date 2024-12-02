@@ -21,6 +21,6 @@ Factory
 Documentation
 ----------------
 
-.. autoclass:: isce3.core.TimeDelta.TimeDelta
+.. autoclass:: isce3.core.TimeDelta
    :members:
    :inherited-members:

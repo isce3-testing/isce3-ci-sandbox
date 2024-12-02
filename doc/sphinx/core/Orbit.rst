@@ -22,6 +22,6 @@ Documentation
 ----------------
 
 
-.. autoclass:: isce3.core.Orbit.Orbit
+.. autoclass:: isce3.core.Orbit
    :members:
    :inherited-members:

@@ -20,6 +20,6 @@ Factory
 Documentation
 ----------------
 
-.. autoclass:: isce3.product.RadarGridParameters.RadarGridParameters
+.. autoclass:: isce3.product.RadarGridParameters
    :members:
    :inherited-members:

@@ -23,7 +23,7 @@ Factory
 Documentation
 ---------------
 
-.. autoclass:: isce3.core.DateTime.DateTime
+.. autoclass:: isce3.core.DateTime
    :members:
    :inherited-members:
    :special-members: __add__,__sub__

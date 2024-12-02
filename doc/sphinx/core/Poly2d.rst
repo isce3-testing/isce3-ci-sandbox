@@ -32,6 +32,6 @@ Factory
 Documentation
 ----------------
 
-.. autoclass:: isce3.core.Poly2d.Poly2d
+.. autoclass:: isce3.core.Poly2d
    :members:
    :inherited-members:

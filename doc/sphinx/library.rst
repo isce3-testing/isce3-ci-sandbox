@@ -14,24 +14,20 @@ These are data structures that are directly related to C++ classes in the isce::
 * :doc:`DateTime <./core/DateTime>` 
 * :doc:`TimeDelta <./core/TimeDelta>`
 * :doc:`Ellipsoid <./core/Ellipsoid>`
-* :doc:`EulerAngles <./core/EulerAngles>`
 * :doc:`Poly1d <./core/Poly1d>`
 * :doc:`Poly2d <./core/Poly2d>`
 * :doc:`LUT1d <./core/LUT1d>`
 * :doc:`Orbit <./core/Orbit>`
-* :doc:`Projection <./core/Projection>`
+* :doc:`ProjectionBase <./core/Projection>`
 
 I/O Datastructures
 ------------------
 
 * :doc:`Raster <./io/Raster>`
-* :doc:`IH5File <./io/IH5>`
 
 Product Datastructures
 ----------------------
 * :doc:`RadarGridParameters <./product/RadarGridParameters>`
-* :doc:`RadarGridProduct <./product/RadarGridProduct>`
-* :doc:`Metadata <./product/Metadata>`
 
 Image Datastructures
 --------------------

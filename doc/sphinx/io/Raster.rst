@@ -15,15 +15,15 @@ Factory
 
 .. code-block:: python
 
-   from isce3.io import raster
+   from isce3.io import Raster
 
-   obj = raster(**kwds)
+   obj = Raster(**kwds)
 
 
 
 Documentation
 ----------------
 
-.. autoclass:: isce3.io.Raster.Raster
+.. autoclass:: isce3.io.Raster
    :members:
    :inherited-members:

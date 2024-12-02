@@ -12,6 +12,6 @@ rubber-sheet transformation of SLC rasters.
 Documentation
 ----------------
 
-.. autoclass:: isce3.image.ResampSlc.ResampSlc
+.. autoclass:: isce3.image.ResampSlc
    :members:
    :inherited-members:

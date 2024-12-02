@@ -21,6 +21,6 @@ Factory
 Documentation
 ----------------
 
-.. autoclass:: isce3.core.LUT1d.LUT1d
+.. autoclass:: isce3.core.LUT1d
    :members:
    :inherited-members:

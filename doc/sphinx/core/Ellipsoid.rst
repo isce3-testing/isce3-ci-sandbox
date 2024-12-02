@@ -21,6 +21,6 @@ Factory
 Documentation
 ----------------
 
-.. autoclass:: isce3.core.Ellipsoid.Ellipsoid
+.. autoclass:: isce3.core.Ellipsoid
    :members:
    :inherited-members:

@@ -33,6 +33,6 @@ Documentation
 ----------------
 
 
-.. autoclass:: isce3.core.Poly1d.Poly1d
+.. autoclass:: isce3.core.Poly1d
     :members:
     :inherited-members:
