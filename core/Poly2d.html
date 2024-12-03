@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Poly2d &#8212; ISCE  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ISCE  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Poly2d</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="pypoly2d">
+<h1>pyPoly2d<a class="headerlink" href="#pypoly2d" title="Link to this heading">¶</a></h1>
+<p>Poly2d is a data structure meant to capture 1D functions of the form</p>
+<div class="math notranslate nohighlight">
+\[f(y,x) = \sum_{i=0}^{N_y} \sum_{j=0}^{N_x} c_{ij} \cdot \left( \frac{y-\mu_y}{\sigma_y} \right)^i \cdot \left( \frac{x-\mu_x}{\sigma_x} \right)^j\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(N_y\)</span> and <span class="math notranslate nohighlight">\(N_x\)</span> are the orders of the polynomial in azimuth (y) and range (x).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu_y\)</span> and <span class="math notranslate nohighlight">\(\mu_x\)</span> are the means.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma_y\)</span> and <span class="math notranslate nohighlight">\(\sigma_x\)</span> are the norms.</p></li>
+<li><p><span class="math notranslate nohighlight">\([c_{00}, c_{01}, ..., c_{N_yN_x}]\)</span> is the set of coefficients.</p></li>
+</ul>
+<section id="factory">
+<h2>Factory<a class="headerlink" href="#factory" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">isce3.core</span> <span class="kn">import</span> <span class="n">poly2d</span>
+
+<span class="n">obj</span> <span class="o">=</span> <span class="n">poly2d</span><span class="p">(</span><span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="isce3.core.Poly2d">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">isce3.core.</span></span><span class="sig-name descname"><span class="pre">Poly2d</span></span><a class="headerlink" href="#isce3.core.Poly2d" title="Link to this definition">¶</a></dt>
+<dd><p>A 2-dimensional power series.</p>
+<p>The Poly2d class represents a polynomial function of range
+(<span class="math notranslate nohighlight">\(x\)</span>) and azimuth (<span class="math notranslate nohighlight">\(y\)</span>), defined as follows:</p>
+<div class="math notranslate nohighlight">
+\[f\left( y, x \right) = \sum_{i=0}^{N_y} \sum_{j=0}^{N_x} a_{ij}
+    \cdot \left( \frac{y-\mu_y}{\sigma_y} \right)^i  \cdot
+    \left( \frac{x-\mu_x}{\sigma_x} \right)^j\]</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isce3.core.Poly2d.coeffs">
+<span class="sig-name descname"><span class="pre">coeffs</span></span><a class="headerlink" href="#isce3.core.Poly2d.coeffs" title="Link to this definition">¶</a></dt>
+<dd><p>A 2-D array of polynomial coefficients in order of increasing
+degree, with shape <cite>(y_order+1, x_order+1)</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">x_mean,</span> <span class="pre">y_mean</span></span></dt>
+<dd><p>x/range and y/azimuth offsets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">x_std,</span> <span class="pre">y_std</span></span></dt>
+<dd><p>x/range and y/azimuth scale factors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="isce3.core.Poly2d.eval">
+<span class="sig-name descname"><span class="pre">eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#isce3.core.Poly2d.eval" title="Link to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic">
+<li><p>eval(self: isce3.ext.isce3.core.Poly2d, y: float, x: float) -&gt; float</p>
+<blockquote>
+<div><p>Evaluate polynomial at given <cite>y</cite> and <cite>x</cite>.</p>
+</div></blockquote>
+</li>
+<li><p>eval(self: isce3.ext.isce3.core.Poly2d, y: numpy.ndarray[numpy.float64[m, 1]], x: numpy.ndarray[numpy.float64[m, 1]]) -&gt; numpy.ndarray[numpy.float64[m, 1]]</p>
+<blockquote>
+<div><p>Evaluate the polynomial at the given (y, x) coordinates.</p>
+<p><cite>y</cite> and <cite>x</cite> must have the same shape.</p>
+</div></blockquote>
+</li>
+<li><p>eval(self: isce3.ext.isce3.core.Poly2d, y: numpy.ndarray[numpy.float64[m, n], flags.c_contiguous], x: numpy.ndarray[numpy.float64[m, n], flags.c_contiguous]) -&gt; numpy.ndarray[numpy.float64[m, n]]</p>
+<blockquote>
+<div><p>Evaluate the polynomial at the given (y, x) coordinates.</p>
+<p><cite>y</cite> and <cite>x</cite> must have the same shape.</p>
+</div></blockquote>
+</li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="isce3.core.Poly2d.evalgrid">
+<span class="sig-name descname"><span class="pre">evalgrid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#isce3.core.Poly2d" title="isce3.ext.isce3.core.Poly2d"><span class="pre">isce3.ext.isce3.core.Poly2d</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_vect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">[</span></span><span class="pre">m</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_vect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">[</span></span><span class="pre">m</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">[</span></span><span class="pre">m</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">n</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#isce3.core.Poly2d.evalgrid" title="Link to this definition">¶</a></dt>
+<dd><p>Evaluate the polynomial on the Cartesian product of <cite>x_vect</cite> and <cite>y_vect</cite>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">pyPoly2d</a><ul>
+<li><a class="reference internal" href="#factory">Factory</a></li>
+<li><a class="reference internal" href="#documentation">Documentation</a><ul>
+<li><a class="reference internal" href="#isce3.core.Poly2d"><code class="docutils literal notranslate"><span class="pre">Poly2d</span></code></a><ul>
+<li><a class="reference internal" href="#isce3.core.Poly2d.coeffs"><code class="docutils literal notranslate"><span class="pre">Poly2d.coeffs</span></code></a></li>
+<li><a class="reference internal" href="#isce3.core.Poly2d.eval"><code class="docutils literal notranslate"><span class="pre">Poly2d.eval()</span></code></a></li>
+<li><a class="reference internal" href="#isce3.core.Poly2d.evalgrid"><code class="docutils literal notranslate"><span class="pre">Poly2d.evalgrid()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/core/Poly2d.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ISCE  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Poly2d</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2018, JPL/Caltech.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    </div>
+  </body>
+</html>

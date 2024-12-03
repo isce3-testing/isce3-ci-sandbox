@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ResampSlc &#8212; ISCE  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ISCE  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ResampSlc</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="resampslc">
+<h1>ResampSlc<a class="headerlink" href="#resampslc" title="Link to this heading">¶</a></h1>
+<p>ResampSlc provides a wrapper for the isce::image::ResampSlc class which is responsible for
+rubber-sheet transformation of SLC rasters.</p>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="isce3.image.ResampSlc">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">isce3.image.</span></span><span class="sig-name descname"><span class="pre">ResampSlc</span></span><a class="headerlink" href="#isce3.image.ResampSlc" title="Link to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="isce3.image.ResampSlc.resamp">
+<span class="sig-name descname"><span class="pre">resamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#isce3.image.ResampSlc.resamp" title="Link to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic">
+<li><p>resamp(self: isce3.ext.isce3.image.ResampSlc, input_slc: isce3::io::Raster, output_slc: isce3::io::Raster, rg_offset_raster: isce3::io::Raster, az_offset_raster: isce3::io::Raster, input_band: int = 1, flatten: bool = False, row_buffer: int = 40, chip_size: int = 9) -&gt; None</p>
+<blockquote>
+<div><p>Resample a SLC</p>
+<dl class="simple">
+<dt>input_slc: isce3.io.Raster</dt><dd><p>Input raster containing SLC to be resampled</p>
+</dd>
+<dt>output_slc: isce3.io.Raster</dt><dd><p>Output raster containing resampled SLC</p>
+</dd>
+<dt>rg_offset_raster: isce3.io.Raster</dt><dd><p>Raster containing range shift to be applied</p>
+</dd>
+<dt>az_offset_raster: isce3.io.Raster</dt><dd><p>Raster containing azimuth shift to be applied</p>
+</dd>
+<dt>input_band: int</dt><dd><p>Band of input raster to resample</p>
+</dd>
+<dt>flatten: bool</dt><dd><p>Flag to flatten resampled SLC</p>
+</dd>
+<dt>row_buffer: int</dt><dd><p>Rows excluded from top/bottom of azimuth raster while searching
+for min/max row indices of resampled SLC</p>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+<li><p>resamp(self: isce3.ext.isce3.image.ResampSlc, input_filename: str, output_filename: str, rg_offset_filename: str, az_offset_filename: str, input_band: int = 1, flatten: bool = False, row_buffer: int = 40, chip_size: int = 9) -&gt; None</p>
+<blockquote>
+<div><p>Resample a SLC</p>
+<dl class="simple">
+<dt>input_filename: isce3.io.Raster</dt><dd><p>Path of file containing SLC to be resampled</p>
+</dd>
+<dt>output_filename: isce3.io.Raster</dt><dd><p>Path of file containing resampled SLC</p>
+</dd>
+<dt>rg_offset_filename: isce3.io.Raster</dt><dd><p>Path of file containing range shift to be applied</p>
+</dd>
+<dt>az_offset_filename: isce3.io.Raster</dt><dd><p>Path of file containing azimuth shift to be applied</p>
+</dd>
+<dt>input_band: int</dt><dd><p>Band of input raster to resample</p>
+</dd>
+<dt>flatten: bool</dt><dd><p>Flag to flatten resampled SLC</p>
+</dd>
+<dt>row_buffer: int</dt><dd><p>Rows excluded from top/bottom of azimuth raster while searching
+for min/max row indices of resampled SLC</p>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+</ol>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">ResampSlc</a><ul>
+<li><a class="reference internal" href="#documentation">Documentation</a><ul>
+<li><a class="reference internal" href="#isce3.image.ResampSlc"><code class="docutils literal notranslate"><span class="pre">ResampSlc</span></code></a><ul>
+<li><a class="reference internal" href="#isce3.image.ResampSlc.resamp"><code class="docutils literal notranslate"><span class="pre">ResampSlc.resamp()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/image/ResampSlc.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ISCE  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ResampSlc</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2018, JPL/Caltech.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    </div>
+  </body>
+</html>

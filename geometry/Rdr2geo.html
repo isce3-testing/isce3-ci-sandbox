@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Rdr2Geo &#8212; ISCE  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ISCE  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Rdr2Geo</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="rdr2geo">
+<h1>Rdr2geo<a class="headerlink" href="#rdr2geo" title="Link to this heading">¶</a></h1>
+<p>Transformer from radar geometry coordinates to map coordinates with DEM / reference altitude.
+This is the heavy duty version that performs the transformation for entire images.</p>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="isce3.geometry.Rdr2Geo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">isce3.geometry.</span></span><span class="sig-name descname"><span class="pre">Rdr2Geo</span></span><a class="headerlink" href="#isce3.geometry.Rdr2Geo" title="Link to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="isce3.geometry.Rdr2Geo.topo">
+<span class="sig-name descname"><span class="pre">topo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#isce3.geometry.Rdr2Geo.topo" title="Link to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic">
+<li><p>topo(self: isce3.ext.isce3.geometry.Rdr2Geo, dem_raster: isce3::io::Raster, outdir: str) -&gt; None</p></li>
+<li><p>topo(self: isce3.ext.isce3.geometry.Rdr2Geo, dem_raster: isce3::io::Raster, x_raster: isce3::io::Raster = None, y_raster: isce3::io::Raster = None, height_raster: isce3::io::Raster = None, incidence_angle_raster: isce3::io::Raster = None, heading_angle_raster: isce3::io::Raster = None, local_incidence_angle_raster: isce3::io::Raster = None, local_psi_raster: isce3::io::Raster = None, simulated_amplitude_raster: isce3::io::Raster = None, layover_shadow_raster: isce3::io::Raster = None, ground_to_sat_east_raster: isce3::io::Raster = None, ground_to_sat_north_raster: isce3::io::Raster = None) -&gt; None</p>
+<blockquote>
+<div><p>Run topo and write to user created rasters</p>
+<dl class="simple">
+<dt>dem_raster: isce3.io.Raster</dt><dd><p>Input DEM raster</p>
+</dd>
+<dt>x_raster: isce3.io.Raster</dt><dd><p>Output raster for X coordinate in requested projection system
+(meters or degrees)</p>
+</dd>
+<dt>y_raster: isce3.io.Raster</dt><dd><p>Output raster for Y cooordinate in requested projection system
+(meters or degrees)</p>
+</dd>
+<dt>height_raster: isce3.io.Raster</dt><dd><p>Output raster for height above ellipsoid (meters)</p>
+</dd>
+<dt>incidence_raster: isce3.io.Raster</dt><dd><p>Output raster for incidence angle (degrees) computed from vertical
+at target</p>
+</dd>
+<dt>heading_angle_raster: isce3.io.Raster</dt><dd><p>Output raster for azimuth angle (degrees) computed anti-clockwise
+from EAST (Right hand rule)</p>
+</dd>
+<dt>local_incidence_raster: isce3.io.Raster</dt><dd><p>Output raster for local incidence angle (degrees) at target</p>
+</dd>
+<dt>local_psi_raster: isce3.io.Raster</dt><dd><p>Output raster for local projection angle (degrees) at target</p>
+</dd>
+<dt>simulated_amplitude_raster: isce3.io.Raster</dt><dd><p>Output raster for simulated amplitude image.</p>
+</dd>
+<dt>layover_shadow_raster: isce3.io.Raster</dt><dd><p>Output raster for layover/shadow mask.</p>
+</dd>
+<dt>ground_to_sat_east_raster: isce3.io.Raster</dt><dd><p>Output raster for east component of ground to satellite unit vector</p>
+</dd>
+<dt>ground_to_sat_north_raster: isce3.io.Raster</dt><dd><p>Output raster for north component of ground to satellite unit vector</p>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+</ol>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Rdr2geo</a><ul>
+<li><a class="reference internal" href="#documentation">Documentation</a><ul>
+<li><a class="reference internal" href="#isce3.geometry.Rdr2Geo"><code class="docutils literal notranslate"><span class="pre">Rdr2Geo</span></code></a><ul>
+<li><a class="reference internal" href="#isce3.geometry.Rdr2Geo.topo"><code class="docutils literal notranslate"><span class="pre">Rdr2Geo.topo()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/geometry/Rdr2geo.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ISCE  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Rdr2Geo</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2018, JPL/Caltech.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    </div>
+  </body>
+</html>
