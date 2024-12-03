@@ -1,6 +1,6 @@
 :orphan:
 
-.. title:: Geo2rdr
+.. title:: Geo2Rdr
 
 Geo2rdr
 =========
@@ -12,6 +12,6 @@ Heavy duty version that performs this mapping for entire images.
 Documentation
 -----------------
 
-.. autoclass:: isce3.geometry.Geo2rdr.Geo2rdr
+.. autoclass:: isce3.geometry.Geo2Rdr
    :members:
    :inherited-members:

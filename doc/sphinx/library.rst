@@ -36,8 +36,8 @@ Image Datastructures
 
 Geometry Datastructures
 ------------------------
-* :doc:`Rdr2geo <./geometry/Rdr2geo>`
-* :doc:`Geo2rdr <./geometry/Geo2rdr>`
+* :doc:`Rdr2Geo <./geometry/Rdr2geo>`
+* :doc:`Geo2Rdr <./geometry/Geo2rdr>`
 * :doc:`DEMInterpolator <./geometry/DEMInterpolator>`
 
 Geometry Functions

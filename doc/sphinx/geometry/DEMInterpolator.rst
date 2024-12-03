@@ -11,6 +11,6 @@ Allows for loading DEMs for rasters on file or can be initialized to constant El
 Documentation
 -----------------
 
-.. autoclass:: isce3.geometry.DEMInterpolator.DEMInterpolator
+.. autoclass:: isce3.geometry.DEMInterpolator
    :members:
    :inherited-members:

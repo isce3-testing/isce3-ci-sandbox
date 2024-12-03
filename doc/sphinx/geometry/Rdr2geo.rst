@@ -1,6 +1,6 @@
 :orphan:
 
-.. title:: Rdr2geo
+.. title:: Rdr2Geo
 
 Rdr2geo
 ========
@@ -11,6 +11,6 @@ This is the heavy duty version that performs the transformation for entire image
 Documentation
 ---------------
 
-.. autoclass:: isce3.geometry.Rdr2geo.Rdr2geo
+.. autoclass:: isce3.geometry.Rdr2Geo
    :members:
    :inherited-members:
