@@ -28,7 +28,7 @@ The input state vectors are provided in a simple 7-column text file as shown bel
 .. code-block:: python
 
     def loadOrbit(infilename):
-        from isce3.core import statevector, orbit, dateTime
+        from isce3.core import StateVector, Orbit, DateTime
         
         #List of state vectors
         svs = []
@@ -41,17 +41,17 @@ The input state vectors are provided in a simple 7-column text file as shown bel
                 vals = line.strip().split()
 
                 #Create dateTime object.
-                tstamp = dateTime(dt=vals[0])
+                tstamp = DateTime(vals[0])
 
                 pos = [float(x) for x in vals[1:4]]
                 vel = [float(x) for x in vals[4:7]]
 
 
-                svs.append( statevector(datetime=tstamp, 
+                svs.append( StateVector(datetime=tstamp,
                                         position=pos,
                                         velocity=vel))
 
-        return orbit(statevecs=svs)
+        return Orbit(svs)
 
 .. note::
     In this example, we demonstrated creation of Orbit objects with simple text files. The same approach can be used 
@@ -72,28 +72,27 @@ A simple RadarGridParameters object can be created as shown below:
 
 .. code-block:: python
 
-    from isce3.product import radarGridParameters
-    from isce3.core import dateTime
+    from isce3.product import RadarGridParameters
+    from isce3.core import DateTime, LookSide
 
 
-    grid = radarGridParameters()
-    
-    #lookSide
-    grid.lookSide = "left"
+    grid = RadarGridParameters(
+        lookside = LookSide.Left,
 
-    #Imaging wavelength
-    grid.wavelength = 0.06
+        # Imaging wavelength
+        wavelength = 0.06,
 
-    #Slant range extent
-    grid.startingRange = 8.0e5
-    grid.rangePixelSpacing = 10.
-    grid.width = 1000
+        # Slant range extent
+        starting_range = 8e5,
+        range_pixel_spacing = 10.,
+        width = 1000,
 
-    #Along track extent
-    grid.referenceEpoch = dateTime(dt="2023-01-03T14:21:55.125")
-    grid.sensingStart = 0.  #Seconds since refEpoch
-    grid.prf = 1000.
-    grid.length = 1500
+        # Along track extent
+        ref_epoch = DateTime("2023-01-03T14:21:55.125"),
+        sensing_start = 0.,  # Seconds since ref_epoch
+        prf = 1000.,
+        length = 1500,
+    )
 
 .. note::
     This example goes into gory detail of setting up a basic radar grid at the lowest level. 
@@ -110,38 +109,39 @@ boxes on the ground.
 
 .. code-block:: python
 
-    from isce3.core import dateTime, orbit, projection
-    from isce3.product import radarGridParameters
-    from isce3.geometry import getGeoPerimeter
+    from isce3.core import DateTime, LookSide, make_projection
+    from isce3.product import RadarGridParameters
+    from isce3.geometry import get_geo_perimeter_wkt
 
     #See above for implementation details
     arc = loadOrbit('orbit_arc.txt')
 
     #Create radar grid, but sync referenceEpoch for fast computation
-    grid = radarGridParameters()
-    grid.lookSide = "left"
-    grid.wavelength = 0.06
-    grid.startingRange = 8.0e5
-    grid.rangePixelSpacing = 10.
-    grid.width = 1000
-    grid.referenceEpoch = arc.referenceEpoch
-    grid.sensingStart = (dateTime(dt="2023-01-03T14:21:55.125") - grid.referenceEpoch).getTotalSeconds()
-    grid.prf = 1000.
-    grid.length = 1500
+    grid = RadarGridParameters(
+        lookside = LookSide.Left,
+        wavelength = 0.06,
+        starting_range = 8e5,
+        range_pixel_spacing = 10.,
+        width = 1000,
+        ref_epoch = arc.reference_epoch,
+        sensing_start = (DateTime("2023-01-03T14:21:55.125") - arc.reference_epoch).total_seconds()
+        prf = 1000.,
+        length = 1500,
+    )
 
-    assert(grid.referenceEpoch == arc.referenceEpoch)
+    assert(grid.ref_epoch == arc.reference_epoch)
 
 
-    ##Use perimeter functionality
-    epsg = projection(epsg=4326)
-    box = getGeoPerimeter(grid, arc, epsg, pointsPerEdge=5)
+    # Use perimeter functionality
+    epsg = make_projection(4326)
+    box = get_geo_perimeter_wkt(grid, arc, epsg, points_per_edge=5)
 
-    #box is a Geojson string
+    # box is a WKT string
     print(box)
 
 .. note::
     We could also have implemented the perimeter estimation by looping over points on the edge of 
-    the swath and using isce3.geometry.rdr2geo_pt function with appropriate inputs
+    the swath and using isce3.geometry.rdr2geo function with appropriate inputs
 
 .. _invmap:
 
@@ -154,8 +154,8 @@ the orbit data structure
 
 .. code-block:: python
 
-   from isce3.core import lut2d
-   from isce3.geometry import geo2rdr_point
+   from isce3.core import LUT2d
+   from isce3.geometry import geo2rdr
    import json
    import numpy as np
 
@@ -163,7 +163,7 @@ the orbit data structure
    targets = json.loads(box)['coordinates']
 
    #Set up zero doppler
-   doppler = lut2d()
+   doppler = LUT2d()
 
    #Get ellipsoid spec
    elp = epsg.ellipsoid() 
@@ -173,15 +173,15 @@ the orbit data structure
       llh = [np.radians(targ[0]), np.radians(targ[1]), targ[2]]
 
       #Estimate target position
-      taz, rng = geo2rdr_point(llh, elp, arc, doppler,
-                               grid.wavelength, grid.lookSide)
+      taz, rng = geo2rdr(llh, elp, arc, doppler,
+                         grid.wavelength, grid.lookside)
 
       #Line, pixel number
       print('Target at: ', *targ)
-      print('Estimated line number: ', (taz - grid.sensingStart) * grid.prf)
-      print('Estimated pixel number: ',(rng - grid.startingRange)/grid.rangePixelSpacing)
+      print('Estimated line number: ', (taz - grid.sensing_start) * grid.prf)
+      print('Estimated pixel number: ',(rng - grid.starting_range) / grid.range_pixel_spacing)
 
 
-.. note:: The threshold parameter to rdr2geo_point determines the accuracy of the inversion. For precise 
+.. note:: The threshold parameter to geo2rdr determines the accuracy of the inversion. For precise
     location, use threshold on order of 1.0e-6. Default threshold at Python level is on order of cm, 
     which is generally good enough for bounding box estimates. 

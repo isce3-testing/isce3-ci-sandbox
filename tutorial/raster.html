@@ -43,10 +43,10 @@
 </ol>
 <section id="open-an-existing-file-in-read-only-mode">
 <span id="readonlymode"></span><h2>Open an existing file in Read-Only Mode<a class="headerlink" href="#open-an-existing-file-in-read-only-mode" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">isce3.io</span> <span class="kn">import</span> <span class="n">raster</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">isce3.io</span> <span class="kn">import</span> <span class="n">Raster</span>
 
 <span class="c1">#Create object</span>
-<span class="n">image</span> <span class="o">=</span> <span class="n">raster</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;inputfilename&quot;</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">Raster</span><span class="p">(</span><span class="s2">&quot;inputfilename&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dims: </span><span class="si">{0}</span><span class="s1">P x </span><span class="si">{1}</span><span class="s1">L&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">raster</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">raster</span><span class="o">.</span><span class="n">length</span><span class="p">))</span>
 
 <span class="c1">#image is ready to be passed on to ISCE processing modules</span>
@@ -55,14 +55,14 @@
 </section>
 <section id="open-an-existing-file-in-update-mode">
 <span id="updatemode"></span><h2>Open an existing file in Update Mode<a class="headerlink" href="#open-an-existing-file-in-update-mode" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">isce3.io</span> <span class="kn">import</span> <span class="n">raster</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">isce3.io</span> <span class="kn">import</span> <span class="n">Raster</span>
 <span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
 
 <span class="c1">#Create object</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">inputfilename</span><span class="p">,</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GA_Update</span><span class="p">)</span>
-<span class="n">image</span> <span class="o">=</span> <span class="n">raster</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">ds</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">Raster</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">numBands</span><span class="p">):</span>
-   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Band </span><span class="si">{0}</span><span class="s1"> is of type </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ii</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GetDataTypeName</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">getDatatype</span><span class="p">(</span><span class="n">ii</span><span class="o">+</span><span class="mi">1</span><span class="p">))))</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Band </span><span class="si">{0}</span><span class="s1"> is of type </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ii</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GetDataTypeName</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">datatype</span><span class="p">(</span><span class="n">ii</span><span class="o">+</span><span class="mi">1</span><span class="p">))))</span>
 
  <span class="c1">#image is ready to be passed on to ISCE processing modules</span>
 </pre></div>
@@ -71,7 +71,7 @@
 <section id="creating-a-raster">
 <span id="createmode"></span><h2>Creating a raster<a class="headerlink" href="#creating-a-raster" title="Link to this heading">¶</a></h2>
 <p>It is really easy to create raster with GDAL and then pass it to ISCE to work with.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">isce3.io</span> <span class="kn">import</span> <span class="n">raster</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">isce3.io</span> <span class="kn">import</span> <span class="n">Raster</span>
 <span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
 
 <span class="c1">#Create GDAL raster</span>
@@ -80,10 +80,10 @@
 <span class="n">ds</span><span class="o">.</span><span class="n">SetGeoTransform</span><span class="p">([</span><span class="o">-</span><span class="mf">1.0e6</span><span class="p">,</span> <span class="mf">1.0e3</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.5e6</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0e3</span><span class="p">])</span>
 
 <span class="c1">#Wrap it with pyRaster</span>
-<span class="n">image</span> <span class="o">=</span> <span class="n">raster</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">ds</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">Raster</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
 
 <span class="c1">#Set projection code. Can do this with GDAL+osr as well before creating raster.</span>
-<span class="n">image</span><span class="o">.</span><span class="n">EPSG</span> <span class="o">=</span> <span class="mi">3031</span>
+<span class="n">image</span><span class="o">.</span><span class="n">set_epsg</span><span class="p">(</span><span class="mi">3031</span><span class="p">)</span>
 
 <span class="c1">#image is ready to be passed on to ISCE processing modules</span>
 </pre></div>
@@ -92,7 +92,7 @@
 <section id="creating-a-raster-using-numpy-array">
 <span id="createnumpy"></span><h2>Creating a raster using numpy array<a class="headerlink" href="#creating-a-raster-using-numpy-array" title="Link to this heading">¶</a></h2>
 <p>You can also create GDAL datasets out of numpy arrays and pass it to ISCE to work with.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">isce3.io</span> <span class="kn">import</span> <span class="n">raster</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">isce3.io</span> <span class="kn">import</span> <span class="n">Raster</span>
 <span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal_array</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -103,7 +103,7 @@
 <span class="n">ds</span> <span class="o">=</span> <span class="n">gdal_array</span><span class="o">.</span><span class="n">OpenArray</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
 
 <span class="c1">#Pass gdal dataset to pyRaster</span>
-<span class="n">image</span> <span class="o">=</span> <span class="n">raster</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">ds</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">Raster</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
 
 <span class="c1">#image is ready to be passed on to ISCE processing modules</span>
 </pre></div>
@@ -113,7 +113,7 @@
 <span id="withh5py"></span><h2>Creating a raster using h5py<a class="headerlink" href="#creating-a-raster-using-h5py" title="Link to this heading">¶</a></h2>
 <p>You can also create ISCE Rasters out of h5py datasets. Note that for read only operations, you can use GDAL’s
 &lt;a href=”<a class="reference external" href="https://gdal.org/drivers/raster/hdf5.html">https://gdal.org/drivers/raster/hdf5.html</a>”&gt;HDF5 driver&lt;/a&gt; as well and set up rasters as shown above.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">isce3.io</span> <span class="kn">import</span> <span class="n">raster</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">isce3.io</span> <span class="kn">import</span> <span class="n">Raster</span>
 <span class="kn">import</span> <span class="nn">h5py</span>
 
 <span class="c1">#Create HDF5 file</span>
@@ -127,7 +127,7 @@
 <span class="n">dset</span> <span class="o">=</span> <span class="n">grp</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">150</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;f4&#39;</span><span class="p">)</span>
 
 <span class="c1">#Wrap it with ISCE raster</span>
-<span class="n">image</span> <span class="o">=</span> <span class="n">raster</span><span class="p">(</span><span class="n">h5</span><span class="o">=</span><span class="n">dset</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">Raster</span><span class="p">(</span><span class="n">dset</span><span class="p">)</span>
 
 <span class="c1">#image is ready to be passed on to ISCE processing modules</span>
 </pre></div>

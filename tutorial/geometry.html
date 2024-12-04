@@ -64,7 +64,7 @@ The input state vectors are provided in a simple 7-column text file as shown bel
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">loadOrbit</span><span class="p">(</span><span class="n">infilename</span><span class="p">):</span>
-    <span class="kn">from</span> <span class="nn">isce3.core</span> <span class="kn">import</span> <span class="n">statevector</span><span class="p">,</span> <span class="n">orbit</span><span class="p">,</span> <span class="n">dateTime</span>
+    <span class="kn">from</span> <span class="nn">isce3.core</span> <span class="kn">import</span> <span class="n">StateVector</span><span class="p">,</span> <span class="n">Orbit</span><span class="p">,</span> <span class="n">DateTime</span>
 
     <span class="c1">#List of state vectors</span>
     <span class="n">svs</span> <span class="o">=</span> <span class="p">[]</span>
@@ -77,17 +77,17 @@ The input state vectors are provided in a simple 7-column text file as shown bel
             <span class="n">vals</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 
             <span class="c1">#Create dateTime object.</span>
-            <span class="n">tstamp</span> <span class="o">=</span> <span class="n">dateTime</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="n">vals</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">tstamp</span> <span class="o">=</span> <span class="n">DateTime</span><span class="p">(</span><span class="n">vals</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
             <span class="n">pos</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">vals</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]]</span>
             <span class="n">vel</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">vals</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">7</span><span class="p">]]</span>
 
 
-            <span class="n">svs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">statevector</span><span class="p">(</span><span class="n">datetime</span><span class="o">=</span><span class="n">tstamp</span><span class="p">,</span>
+            <span class="n">svs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">StateVector</span><span class="p">(</span><span class="n">datetime</span><span class="o">=</span><span class="n">tstamp</span><span class="p">,</span>
                                     <span class="n">position</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span>
                                     <span class="n">velocity</span><span class="o">=</span><span class="n">vel</span><span class="p">))</span>
 
-    <span class="k">return</span> <span class="n">orbit</span><span class="p">(</span><span class="n">statevecs</span><span class="o">=</span><span class="n">svs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Orbit</span><span class="p">(</span><span class="n">svs</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -103,28 +103,27 @@ of a radar image in azimuth time and slant range coordinates. This data structur
 relevant for all NISAR L1 and L2 radar geometry products. It is inherently assumed
 that the imagery is laid out on a uniform grid in both azimuth time and slant range.</p>
 <p>A simple RadarGridParameters object can be created as shown below:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">isce3.product</span> <span class="kn">import</span> <span class="n">radarGridParameters</span>
-<span class="kn">from</span> <span class="nn">isce3.core</span> <span class="kn">import</span> <span class="n">dateTime</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">isce3.product</span> <span class="kn">import</span> <span class="n">RadarGridParameters</span>
+<span class="kn">from</span> <span class="nn">isce3.core</span> <span class="kn">import</span> <span class="n">DateTime</span><span class="p">,</span> <span class="n">LookSide</span>
 
 
-<span class="n">grid</span> <span class="o">=</span> <span class="n">radarGridParameters</span><span class="p">()</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">RadarGridParameters</span><span class="p">(</span>
+    <span class="n">lookside</span> <span class="o">=</span> <span class="n">LookSide</span><span class="o">.</span><span class="n">Left</span><span class="p">,</span>
 
-<span class="c1">#lookSide</span>
-<span class="n">grid</span><span class="o">.</span><span class="n">lookSide</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span>
+    <span class="c1"># Imaging wavelength</span>
+    <span class="n">wavelength</span> <span class="o">=</span> <span class="mf">0.06</span><span class="p">,</span>
 
-<span class="c1">#Imaging wavelength</span>
-<span class="n">grid</span><span class="o">.</span><span class="n">wavelength</span> <span class="o">=</span> <span class="mf">0.06</span>
+    <span class="c1"># Slant range extent</span>
+    <span class="n">starting_range</span> <span class="o">=</span> <span class="mf">8e5</span><span class="p">,</span>
+    <span class="n">range_pixel_spacing</span> <span class="o">=</span> <span class="mf">10.</span><span class="p">,</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
 
-<span class="c1">#Slant range extent</span>
-<span class="n">grid</span><span class="o">.</span><span class="n">startingRange</span> <span class="o">=</span> <span class="mf">8.0e5</span>
-<span class="n">grid</span><span class="o">.</span><span class="n">rangePixelSpacing</span> <span class="o">=</span> <span class="mf">10.</span>
-<span class="n">grid</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">1000</span>
-
-<span class="c1">#Along track extent</span>
-<span class="n">grid</span><span class="o">.</span><span class="n">referenceEpoch</span> <span class="o">=</span> <span class="n">dateTime</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="s2">&quot;2023-01-03T14:21:55.125&quot;</span><span class="p">)</span>
-<span class="n">grid</span><span class="o">.</span><span class="n">sensingStart</span> <span class="o">=</span> <span class="mf">0.</span>  <span class="c1">#Seconds since refEpoch</span>
-<span class="n">grid</span><span class="o">.</span><span class="n">prf</span> <span class="o">=</span> <span class="mf">1000.</span>
-<span class="n">grid</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mi">1500</span>
+    <span class="c1"># Along track extent</span>
+    <span class="n">ref_epoch</span> <span class="o">=</span> <span class="n">DateTime</span><span class="p">(</span><span class="s2">&quot;2023-01-03T14:21:55.125&quot;</span><span class="p">),</span>
+    <span class="n">sensing_start</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">,</span>  <span class="c1"># Seconds since ref_epoch</span>
+    <span class="n">prf</span> <span class="o">=</span> <span class="mf">1000.</span><span class="p">,</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="mi">1500</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -138,40 +137,41 @@ return a populated grid structure with data from HDF5 products.</p>
 <span id="forwardmap"></span><h2>Forward mapping example - determining bounding boxes<a class="headerlink" href="#forward-mapping-example-determining-bounding-boxes" title="Link to this heading">¶</a></h2>
 <p>In this example, we will demonstrate the forward mapping algorithm by using it to determine approximate bounding
 boxes on the ground.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">isce3.core</span> <span class="kn">import</span> <span class="n">dateTime</span><span class="p">,</span> <span class="n">orbit</span><span class="p">,</span> <span class="n">projection</span>
-<span class="kn">from</span> <span class="nn">isce3.product</span> <span class="kn">import</span> <span class="n">radarGridParameters</span>
-<span class="kn">from</span> <span class="nn">isce3.geometry</span> <span class="kn">import</span> <span class="n">getGeoPerimeter</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">isce3.core</span> <span class="kn">import</span> <span class="n">DateTime</span><span class="p">,</span> <span class="n">LookSide</span><span class="p">,</span> <span class="n">make_projection</span>
+<span class="kn">from</span> <span class="nn">isce3.product</span> <span class="kn">import</span> <span class="n">RadarGridParameters</span>
+<span class="kn">from</span> <span class="nn">isce3.geometry</span> <span class="kn">import</span> <span class="n">get_geo_perimeter_wkt</span>
 
 <span class="c1">#See above for implementation details</span>
 <span class="n">arc</span> <span class="o">=</span> <span class="n">loadOrbit</span><span class="p">(</span><span class="s1">&#39;orbit_arc.txt&#39;</span><span class="p">)</span>
 
 <span class="c1">#Create radar grid, but sync referenceEpoch for fast computation</span>
-<span class="n">grid</span> <span class="o">=</span> <span class="n">radarGridParameters</span><span class="p">()</span>
-<span class="n">grid</span><span class="o">.</span><span class="n">lookSide</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span>
-<span class="n">grid</span><span class="o">.</span><span class="n">wavelength</span> <span class="o">=</span> <span class="mf">0.06</span>
-<span class="n">grid</span><span class="o">.</span><span class="n">startingRange</span> <span class="o">=</span> <span class="mf">8.0e5</span>
-<span class="n">grid</span><span class="o">.</span><span class="n">rangePixelSpacing</span> <span class="o">=</span> <span class="mf">10.</span>
-<span class="n">grid</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">grid</span><span class="o">.</span><span class="n">referenceEpoch</span> <span class="o">=</span> <span class="n">arc</span><span class="o">.</span><span class="n">referenceEpoch</span>
-<span class="n">grid</span><span class="o">.</span><span class="n">sensingStart</span> <span class="o">=</span> <span class="p">(</span><span class="n">dateTime</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="s2">&quot;2023-01-03T14:21:55.125&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="n">grid</span><span class="o">.</span><span class="n">referenceEpoch</span><span class="p">)</span><span class="o">.</span><span class="n">getTotalSeconds</span><span class="p">()</span>
-<span class="n">grid</span><span class="o">.</span><span class="n">prf</span> <span class="o">=</span> <span class="mf">1000.</span>
-<span class="n">grid</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mi">1500</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">RadarGridParameters</span><span class="p">(</span>
+    <span class="n">lookside</span> <span class="o">=</span> <span class="n">LookSide</span><span class="o">.</span><span class="n">Left</span><span class="p">,</span>
+    <span class="n">wavelength</span> <span class="o">=</span> <span class="mf">0.06</span><span class="p">,</span>
+    <span class="n">starting_range</span> <span class="o">=</span> <span class="mf">8e5</span><span class="p">,</span>
+    <span class="n">range_pixel_spacing</span> <span class="o">=</span> <span class="mf">10.</span><span class="p">,</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="n">ref_epoch</span> <span class="o">=</span> <span class="n">arc</span><span class="o">.</span><span class="n">reference_epoch</span><span class="p">,</span>
+    <span class="n">sensing_start</span> <span class="o">=</span> <span class="p">(</span><span class="n">DateTime</span><span class="p">(</span><span class="s2">&quot;2023-01-03T14:21:55.125&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="n">arc</span><span class="o">.</span><span class="n">reference_epoch</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+    <span class="n">prf</span> <span class="o">=</span> <span class="mf">1000.</span><span class="p">,</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="mi">1500</span><span class="p">,</span>
+<span class="p">)</span>
 
-<span class="k">assert</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">referenceEpoch</span> <span class="o">==</span> <span class="n">arc</span><span class="o">.</span><span class="n">referenceEpoch</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">ref_epoch</span> <span class="o">==</span> <span class="n">arc</span><span class="o">.</span><span class="n">reference_epoch</span><span class="p">)</span>
 
 
-<span class="c1">##Use perimeter functionality</span>
-<span class="n">epsg</span> <span class="o">=</span> <span class="n">projection</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">4326</span><span class="p">)</span>
-<span class="n">box</span> <span class="o">=</span> <span class="n">getGeoPerimeter</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">arc</span><span class="p">,</span> <span class="n">epsg</span><span class="p">,</span> <span class="n">pointsPerEdge</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># Use perimeter functionality</span>
+<span class="n">epsg</span> <span class="o">=</span> <span class="n">make_projection</span><span class="p">(</span><span class="mi">4326</span><span class="p">)</span>
+<span class="n">box</span> <span class="o">=</span> <span class="n">get_geo_perimeter_wkt</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">arc</span><span class="p">,</span> <span class="n">epsg</span><span class="p">,</span> <span class="n">points_per_edge</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 
-<span class="c1">#box is a Geojson string</span>
+<span class="c1"># box is a WKT string</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">box</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We could also have implemented the perimeter estimation by looping over points on the edge of
-the swath and using isce3.geometry.rdr2geo_pt function with appropriate inputs</p>
+the swath and using isce3.geometry.rdr2geo function with appropriate inputs</p>
 </div>
 </section>
 <section id="inverse-mapping-example-locating-known-targets">
@@ -179,8 +179,8 @@ the swath and using isce3.geometry.rdr2geo_pt function with appropriate inputs</
 <p>In this example, we will demonstrate the inverse mapping algorithm by using it to determine the location of a known
 target in a radar image. For this example, we will use the coordinates of the estimated perimeter above and reuse
 the orbit data structure</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">isce3.core</span> <span class="kn">import</span> <span class="n">lut2d</span>
-<span class="kn">from</span> <span class="nn">isce3.geometry</span> <span class="kn">import</span> <span class="n">geo2rdr_point</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">isce3.core</span> <span class="kn">import</span> <span class="n">LUT2d</span>
+<span class="kn">from</span> <span class="nn">isce3.geometry</span> <span class="kn">import</span> <span class="n">geo2rdr</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -188,7 +188,7 @@ the orbit data structure</p>
 <span class="n">targets</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">box</span><span class="p">)[</span><span class="s1">&#39;coordinates&#39;</span><span class="p">]</span>
 
 <span class="c1">#Set up zero doppler</span>
-<span class="n">doppler</span> <span class="o">=</span> <span class="n">lut2d</span><span class="p">()</span>
+<span class="n">doppler</span> <span class="o">=</span> <span class="n">LUT2d</span><span class="p">()</span>
 
 <span class="c1">#Get ellipsoid spec</span>
 <span class="n">elp</span> <span class="o">=</span> <span class="n">epsg</span><span class="o">.</span><span class="n">ellipsoid</span><span class="p">()</span>
@@ -198,18 +198,18 @@ the orbit data structure</p>
    <span class="n">llh</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">targ</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">targ</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">targ</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
 
    <span class="c1">#Estimate target position</span>
-   <span class="n">taz</span><span class="p">,</span> <span class="n">rng</span> <span class="o">=</span> <span class="n">geo2rdr_point</span><span class="p">(</span><span class="n">llh</span><span class="p">,</span> <span class="n">elp</span><span class="p">,</span> <span class="n">arc</span><span class="p">,</span> <span class="n">doppler</span><span class="p">,</span>
-                            <span class="n">grid</span><span class="o">.</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">grid</span><span class="o">.</span><span class="n">lookSide</span><span class="p">)</span>
+   <span class="n">taz</span><span class="p">,</span> <span class="n">rng</span> <span class="o">=</span> <span class="n">geo2rdr</span><span class="p">(</span><span class="n">llh</span><span class="p">,</span> <span class="n">elp</span><span class="p">,</span> <span class="n">arc</span><span class="p">,</span> <span class="n">doppler</span><span class="p">,</span>
+                      <span class="n">grid</span><span class="o">.</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">grid</span><span class="o">.</span><span class="n">lookside</span><span class="p">)</span>
 
    <span class="c1">#Line, pixel number</span>
    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Target at: &#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">targ</span><span class="p">)</span>
-   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Estimated line number: &#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">taz</span> <span class="o">-</span> <span class="n">grid</span><span class="o">.</span><span class="n">sensingStart</span><span class="p">)</span> <span class="o">*</span> <span class="n">grid</span><span class="o">.</span><span class="n">prf</span><span class="p">)</span>
-   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Estimated pixel number: &#39;</span><span class="p">,(</span><span class="n">rng</span> <span class="o">-</span> <span class="n">grid</span><span class="o">.</span><span class="n">startingRange</span><span class="p">)</span><span class="o">/</span><span class="n">grid</span><span class="o">.</span><span class="n">rangePixelSpacing</span><span class="p">)</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Estimated line number: &#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">taz</span> <span class="o">-</span> <span class="n">grid</span><span class="o">.</span><span class="n">sensing_start</span><span class="p">)</span> <span class="o">*</span> <span class="n">grid</span><span class="o">.</span><span class="n">prf</span><span class="p">)</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Estimated pixel number: &#39;</span><span class="p">,(</span><span class="n">rng</span> <span class="o">-</span> <span class="n">grid</span><span class="o">.</span><span class="n">starting_range</span><span class="p">)</span> <span class="o">/</span> <span class="n">grid</span><span class="o">.</span><span class="n">range_pixel_spacing</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The threshold parameter to rdr2geo_point determines the accuracy of the inversion. For precise
+<p>The threshold parameter to geo2rdr determines the accuracy of the inversion. For precise
 location, use threshold on order of 1.0e-6. Default threshold at Python level is on order of cm,
 which is generally good enough for bounding box estimates.</p>
 </div>

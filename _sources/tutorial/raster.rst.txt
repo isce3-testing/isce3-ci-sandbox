@@ -24,10 +24,10 @@ Open an existing file in Read-Only Mode
 
 .. code-block:: python
 
-   from isce3.io import raster
+   from isce3.io import Raster
 
    #Create object
-   image = raster(filename="inputfilename")
+   image = Raster("inputfilename")
    print('Dims: {0}P x {1}L'.format(raster.width, raster.length))
 
    #image is ready to be passed on to ISCE processing modules
@@ -40,14 +40,14 @@ Open an existing file in Update Mode
 
 .. code-block:: python
 
-   from isce3.io import raster
+   from isce3.io import Raster
    from osgeo import gdal
 
    #Create object
    ds = gdal.Open(inputfilename, gdal.GA_Update)
-   image = raster(dataset=ds)
+   image = Raster(ds)
    for ii in range(image.numBands):
-      print('Band {0} is of type {1}'.format(ii+1, gdal.GetDataTypeName(image.getDatatype(ii+1))))
+      print('Band {0} is of type {1}'.format(ii+1, gdal.GetDataTypeName(image.datatype(ii+1))))
 
     #image is ready to be passed on to ISCE processing modules
 
@@ -60,7 +60,7 @@ It is really easy to create raster with GDAL and then pass it to ISCE to work wi
 
 .. code-block:: python
 
-   from isce3.io import raster
+   from isce3.io import Raster
    from osgeo import gdal
 
    #Create GDAL raster
@@ -69,10 +69,10 @@ It is really easy to create raster with GDAL and then pass it to ISCE to work wi
    ds.SetGeoTransform([-1.0e6, 1.0e3, 0., 1.5e6, 0., -1.0e3])
 
    #Wrap it with pyRaster
-   image = raster(dataset=ds)
+   image = Raster(ds)
 
    #Set projection code. Can do this with GDAL+osr as well before creating raster.
-   image.EPSG = 3031
+   image.set_epsg(3031)
 
    #image is ready to be passed on to ISCE processing modules
 
@@ -86,7 +86,7 @@ You can also create GDAL datasets out of numpy arrays and pass it to ISCE to wor
 
 .. code-block:: python
 
-   from isce3.io import raster
+   from isce3.io import Raster
    from osgeo import gdal_array
    import numpy as np
 
@@ -97,7 +97,7 @@ You can also create GDAL datasets out of numpy arrays and pass it to ISCE to wor
    ds = gdal_array.OpenArray(arr)
 
    #Pass gdal dataset to pyRaster
-   image = raster(dataset=ds)
+   image = Raster(ds)
 
    #image is ready to be passed on to ISCE processing modules
 
@@ -112,7 +112,7 @@ You can also create ISCE Rasters out of h5py datasets. Note that for read only o
 
 .. code-block:: python
 
-   from isce3.io import raster 
+   from isce3.io import Raster
    import h5py
 
    #Create HDF5 file
@@ -126,7 +126,7 @@ You can also create ISCE Rasters out of h5py datasets. Note that for read only o
    dset = grp.create_dataset("data", shape=(100,150), dtype='f4')
 
    #Wrap it with ISCE raster 
-   image = raster(h5=dset)
+   image = Raster(dset)
 
    #image is ready to be passed on to ISCE processing modules
 
