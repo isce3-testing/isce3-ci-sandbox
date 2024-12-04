@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>geo2rdr_point &#8212; ISCE  documentation</title>
+    <title>geo2rdr &#8212; ISCE  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
@@ -21,7 +21,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="nav-item nav-item-0"><a href="../index.html">ISCE  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">geo2rdr_point</a></li> 
+        <li class="nav-item nav-item-this"><a href="">geo2rdr</a></li> 
       </ul>
     </div>  
 
@@ -30,12 +30,43 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="geo2rdr-point">
-<h1>geo2rdr_point<a class="headerlink" href="#geo2rdr-point" title="Link to this heading">¶</a></h1>
+  <section id="geo2rdr">
+<h1>geo2rdr<a class="headerlink" href="#geo2rdr" title="Link to this heading">¶</a></h1>
 <p>Transformer from map coordinates to radar geometry coordinates.
 This is a utility to transform one single point.</p>
 <section id="documentation">
 <h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="isce3.geometry.geo2rdr">
+<span class="sig-prename descclassname"><span class="pre">isce3.geometry.</span></span><span class="sig-name descname"><span class="pre">geo2rdr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">lon_lat_height:</span> <span class="pre">numpy.ndarray[numpy.float64[3,</span> <span class="pre">1]],</span> <span class="pre">ellipsoid:</span> <span class="pre">isce3.ext.isce3.core.Ellipsoid</span> <span class="pre">=</span> <span class="pre">&lt;isce3.ext.isce3.core.Ellipsoid</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fade7e61ff0&gt;,</span> <span class="pre">orbit:</span> <span class="pre">isce3.ext.isce3.core.Orbit,</span> <span class="pre">doppler:</span> <span class="pre">isce3.ext.isce3.core.LUT2d,</span> <span class="pre">wavelength:</span> <span class="pre">float,</span> <span class="pre">side:</span> <span class="pre">object,</span> <span class="pre">threshold:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">1e-08,</span> <span class="pre">maxiter:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">50,</span> <span class="pre">delta_range:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">10.0</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#isce3.geometry.geo2rdr" title="Link to this definition">¶</a></dt>
+<dd><p>This is the elementary transformation from map geometry to radar geometry.
+The transformation is applicable for a single lon/lat/h coordinate (i.e., a
+single point target).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interest</strong> (<em>lon_lat_height  Lon/Lat/Hae</em><em> of </em><em>target of</em>)</p></li>
+<li><p><strong>object</strong> (<em>orbit           Orbit</em>)</p></li>
+<li><p><strong>object</strong></p></li>
+<li><p><strong>model</strong> (<em>doppler         LUT2d Doppler</em>)</p></li>
+<li><p><strong>wavelength</strong> (<em>wavelength      Radar</em>)</p></li>
+<li><p><strong>Right</strong> (<em>side            Left or</em>)</p></li>
+<li><p><strong>meters</strong> (<em>threshold       azimuth time convergence threshold in</em>)</p></li>
+<li><p><strong>iterations</strong> (<em>maxiter         Maximum number</em><em> of </em><em>Newton-Raphson</em>)</p></li>
+<li><p><strong>doppler</strong> (<em>delta_range     Step size used for computing derivative of</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>aztime          azimuth time of input Lon/Lat/Hae w.r.t reference</dt><dd><p>epoch of the orbit</p>
+</dd>
+</dl>
+<p>slantRange      slant range to input Lon/Lat/Hae</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 
@@ -49,8 +80,11 @@ This is a utility to transform one single point.</p>
   <div>
     <h3><a href="../index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">geo2rdr_point</a><ul>
-<li><a class="reference internal" href="#documentation">Documentation</a></li>
+<li><a class="reference internal" href="#">geo2rdr</a><ul>
+<li><a class="reference internal" href="#documentation">Documentation</a><ul>
+<li><a class="reference internal" href="#isce3.geometry.geo2rdr"><code class="docutils literal notranslate"><span class="pre">geo2rdr()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -84,7 +118,7 @@ This is a utility to transform one single point.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="nav-item nav-item-0"><a href="../index.html">ISCE  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">geo2rdr_point</a></li> 
+        <li class="nav-item nav-item-this"><a href="">geo2rdr</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

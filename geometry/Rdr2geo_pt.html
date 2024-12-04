@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>rdr2geo_point &#8212; ISCE  documentation</title>
+    <title>rdr2geo &#8212; ISCE  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
@@ -21,7 +21,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="nav-item nav-item-0"><a href="../index.html">ISCE  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">rdr2geo_point</a></li> 
+        <li class="nav-item nav-item-this"><a href="">rdr2geo</a></li> 
       </ul>
     </div>  
 
@@ -30,12 +30,43 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="rdr2geo-point">
-<h1>rdr2geo_point<a class="headerlink" href="#rdr2geo-point" title="Link to this heading">¶</a></h1>
+  <section id="rdr2geo">
+<h1>rdr2geo<a class="headerlink" href="#rdr2geo" title="Link to this heading">¶</a></h1>
 <p>Transformer from radar geometry coordinates to map coordinates with DEM / reference altitude.
 This is a utility to transform one single point.</p>
 <section id="documentation">
 <h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="isce3.geometry.rdr2geo">
+<span class="sig-prename descclassname"><span class="pre">isce3.geometry.</span></span><span class="sig-name descname"><span class="pre">rdr2geo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aztime:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orbit:</span> <span class="pre">isce3.ext.isce3.core.Orbit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side:</span> <span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doppler:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dem:</span> <span class="pre">isce3.ext.isce3.geometry.DEMInterpolator</span> <span class="pre">=</span> <span class="pre">&lt;isce3.ext.isce3.geometry.DEMInterpolator</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fade7e622f0&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ellipsoid:</span> <span class="pre">isce3.ext.isce3.core.Ellipsoid</span> <span class="pre">=</span> <span class="pre">&lt;isce3.ext.isce3.core.Ellipsoid</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fade7e622b0&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#isce3.geometry.rdr2geo" title="Link to this definition">¶</a></dt>
+<dd><p>Radar geometry coordinates to map coordinates transformer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>intersection</strong> (<em>aztime      Azimuth time</em><em> of </em><em>Doppler</em>) – in seconds since orbit.reference_epoch</p>
+</dd>
+</dl>
+<p>:param : in seconds since orbit.reference_epoch
+:param range       Range to target:
+:param meters.:
+:param orbit       isce3.core.Orbit object.:
+:param side        Radar look direction.  Can be string “left” or “right”: or isce3.core.LookSide object.
+:param doppler     Doppler that defines geometry:
+:type doppler     Doppler that defines geometry: default=0
+:param Hz.:
+:type Hz.: default=0
+:param wavelength  Wavelength corresponding to Doppler measurement: Must be nonzero if Doppler is nonzero.
+:param m.: Must be nonzero if Doppler is nonzero.
+:param dem         Digital elevation model:
+:param meters above ellipsoid.:
+:param ellipsoid   Ellipsoid for computing LLH:
+:param default=WGS84.:
+:param threshold   Range convergence threshold:
+:param meters.:
+:param maxiter     Maximum iterations.:
+:param extraiter   Additional iterations.:</p>
+<p>Returns (longitude, latitude, height) of target in (rad,rad,m) units.</p>
+</dd></dl>
+
 </section>
 </section>
 
@@ -49,8 +80,11 @@ This is a utility to transform one single point.</p>
   <div>
     <h3><a href="../index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">rdr2geo_point</a><ul>
-<li><a class="reference internal" href="#documentation">Documentation</a></li>
+<li><a class="reference internal" href="#">rdr2geo</a><ul>
+<li><a class="reference internal" href="#documentation">Documentation</a><ul>
+<li><a class="reference internal" href="#isce3.geometry.rdr2geo"><code class="docutils literal notranslate"><span class="pre">rdr2geo()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -84,7 +118,7 @@ This is a utility to transform one single point.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="nav-item nav-item-0"><a href="../index.html">ISCE  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">rdr2geo_point</a></li> 
+        <li class="nav-item nav-item-this"><a href="">rdr2geo</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

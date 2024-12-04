@@ -1,8 +1,8 @@
 :orphan:
 
-.. title:: geo2rdr_point
+.. title:: geo2rdr
 
-geo2rdr_point
+geo2rdr
 ===============
 
 Transformer from map coordinates to radar geometry coordinates.
@@ -11,4 +11,4 @@ This is a utility to transform one single point.
 Documentation
 ---------------
 
-.. autofunction:: isce3.geometry.geo2rdr_point
+.. autofunction:: isce3.geometry.geo2rdr

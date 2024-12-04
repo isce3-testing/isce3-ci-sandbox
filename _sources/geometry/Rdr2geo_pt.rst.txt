@@ -1,8 +1,8 @@
 :orphan:
 
-.. title:: rdr2geo_point
+.. title:: rdr2geo
 
-rdr2geo_point
+rdr2geo
 ===============
 
 Transformer from radar geometry coordinates to map coordinates with DEM / reference altitude.
@@ -11,4 +11,4 @@ This is a utility to transform one single point.
 Documentation
 ---------------
 
-.. autofunction:: isce3.geometry.rdr2geo_point
+.. autofunction:: isce3.geometry.rdr2geo
