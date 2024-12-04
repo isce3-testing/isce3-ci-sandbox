@@ -1,9 +1,9 @@
 :orphan:
 
-ISCE's Library Interface 
+ISCE3's Library Interface
 ==========================
 
-ISCE's library interface is meant to mimic the C++ code structure.
+ISCE3's library interface is meant to mimic the C++ code structure.
 
 The following classes are exposed to the Python level:
 
