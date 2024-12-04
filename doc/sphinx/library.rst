@@ -43,6 +43,6 @@ Geometry Datastructures
 Geometry Functions
 ---------------------
 * :doc:`getGeoPerimeter <./geometry/getGeoPerimeter>`
-* :doc:`rdr2geo_point <./geometry/Rdr2geo_pt>`
-* :doc:`geo2rdr_point <./geometry/Geo2rdr_pt>`
+* :doc:`rdr2geo <./geometry/Rdr2geo_pt>`
+* :doc:`geo2rdr <./geometry/Geo2rdr_pt>`
 
