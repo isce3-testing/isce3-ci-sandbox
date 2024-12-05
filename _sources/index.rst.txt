@@ -3,15 +3,17 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to ISCE's python documentation!
+Welcome to ISCE3's documentation!
 =======================================
 
-ISCE's Python interface is built as two separate layers:
+ISCE3's interface is built as two separate layers:
 
-1. Library interface for interacing with C++ code
-2. Pyre interface for user-facing workflows
+1. `Python interface </isce3-ci-sandbox/api/python>`_ for workflows and end users
+2. `C++ library interface </isce3-ci-sandbox/api/cxx/annotated.html>`_ for implementing performance-critical algorithms
 
-The Pyre interface uses the pybind11 interface to control the behavior of underlying C++ modules for coordinating behavior of different modules in workflows.
+The Python layer is built on top of the underlying C++ library using `pybind11 <https://pybind11.readthedocs.io/>`_.
+
+The C++ layer is subject to change, so if you need any functionality that currently only exists in the C++ code, it's recommended to add this functionality to the Python bindings rather than use it directly.
 
 
 Library Interface

@@ -154,5 +154,5 @@ var menudata={children:[
 {text:"File Members",url:"globals.html",children:[
 {text:"All",url:"globals.html"},
 {text:"Functions",url:"globals_func.html"}]}]},
-{text:"Python classes",url:"sphinx/html/index.html"},
-{text:"Issue Tracker",url:"^https://github-fn.jpl.nasa.gov/isce-3/isce/issues/"}]}
+{text:"Python API",url:"/isce3-ci-sandbox/api/python"},
+{text:"Issue Tracker",url:"^https://github.com/isce-framework/isce3/issues"}]}

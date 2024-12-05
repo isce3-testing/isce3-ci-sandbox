@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Welcome to ISCE’s python documentation! &#8212; ISCE  documentation</title>
+    <title>Welcome to ISCE3’s documentation! &#8212; ISCE  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
     <script src="_static/documentation_options.js?v=5929fcd5"></script>
@@ -21,7 +21,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="nav-item nav-item-0"><a href="#">ISCE  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Welcome to ISCE’s python documentation!</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Welcome to ISCE3’s documentation!</a></li> 
       </ul>
     </div>  
 
@@ -30,14 +30,15 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="welcome-to-isce-s-python-documentation">
-<h1>Welcome to ISCE’s python documentation!<a class="headerlink" href="#welcome-to-isce-s-python-documentation" title="Link to this heading">¶</a></h1>
-<p>ISCE’s Python interface is built as two separate layers:</p>
+  <section id="welcome-to-isce3-s-documentation">
+<h1>Welcome to ISCE3’s documentation!<a class="headerlink" href="#welcome-to-isce3-s-documentation" title="Link to this heading">¶</a></h1>
+<p>ISCE3’s interface is built as two separate layers:</p>
 <ol class="arabic simple">
-<li><p>Library interface for interacing with C++ code</p></li>
-<li><p>Pyre interface for user-facing workflows</p></li>
+<li><p><a class="reference external" href="/isce3-ci-sandbox/api/python">Python interface</a> for workflows and end users</p></li>
+<li><p><a class="reference external" href="/isce3-ci-sandbox/api/cxx/annotated.html">C++ library interface</a> for implementing performance-critical algorithms</p></li>
 </ol>
-<p>The Pyre interface uses the pybind11 interface to control the behavior of underlying C++ modules for coordinating behavior of different modules in workflows.</p>
+<p>The Python layer is built on top of the underlying C++ library using <a class="reference external" href="https://pybind11.readthedocs.io/">pybind11</a>.</p>
+<p>The C++ layer is subject to change, so if you need any functionality that currently only exists in the C++ code, it’s recommended to add this functionality to the Python bindings rather than use it directly.</p>
 <section id="library-interface">
 <h2>Library Interface<a class="headerlink" href="#library-interface" title="Link to this heading">¶</a></h2>
 <p><a class="reference internal" href="library.html"><span class="doc">Library Interface</span></a></p>
@@ -54,7 +55,7 @@
   <div>
     <h3><a href="#">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">Welcome to ISCE’s python documentation!</a><ul>
+<li><a class="reference internal" href="#">Welcome to ISCE3’s documentation!</a><ul>
 <li><a class="reference internal" href="#library-interface">Library Interface</a></li>
 </ul>
 </li>
@@ -89,7 +90,7 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="nav-item nav-item-0"><a href="#">ISCE  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Welcome to ISCE’s python documentation!</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Welcome to ISCE3’s documentation!</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

@@ -18,5 +18,5 @@ var searchData=
   ['height_15',['height',['../db/d90/classcuArrays.html#acc3341f0f8784a75bdc73b7bd5dbc240',1,'cuArrays::height'],['../dc/dce/classisce3_1_1matchtemplate_1_1pycuampcor_1_1cuArrays.html#a580e52689d0b4004b3fa438d46a5456a',1,'isce3::matchtemplate::pycuampcor::cuArrays::height']]],
   ['horizontalbaseline_16',['horizontalBaseline',['../df/dea/classisce3_1_1core_1_1Baseline.html#a6d5d30276679e1a969513502d4aa4859',1,'isce3::core::Baseline']]],
   ['hours_17',['hours',['../d1/dc4/classisce3_1_1core_1_1TimeDelta.html#a1606e3d2beb1e468dab981e29223ffe5',1,'isce3::core::TimeDelta']]],
-  ['how_20to_20document_20code_20in_20isce_20as_20a_20developer_18',['How to document code in ISCE as a developer?',['../d4/d19/howtodoc.html',1,'']]]
+  ['how_20to_20document_20code_20in_20isce3_20as_20a_20developer_18',['How to document code in ISCE3 as a developer?',['../d4/d19/howtodoc.html',1,'']]]
 ];

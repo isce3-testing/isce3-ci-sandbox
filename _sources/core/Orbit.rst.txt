@@ -13,9 +13,9 @@ Factory
 
 .. code-block:: python
 
-   from isce3.core import orbit
+   from isce3.core import Orbit
 
-   obj = orbit(**kwds)
+   obj = Orbit(**kwds)
 
 
 Documentation

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>isce3: ISCE Directory Structure</title>
+<title>isce3: ISCE3 Directory Structure</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -91,7 +91,7 @@ $(function(){ initResizable(false); });
 </div><!-- top -->
 <div id="doc-content">
 <div><div class="header">
-  <div class="headertitle"><div class="title">ISCE Directory Structure</div></div>
+  <div class="headertitle"><div class="title">ISCE3 Directory Structure</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
@@ -101,7 +101,7 @@ $(function(){ initResizable(false); });
 </div>
 <div class="textblock"><h1><a class="anchor" id="gitstructure"></a>
 Source folder structure</h1>
-<p>The directory structure of the ISCE git repository is as shown below. The repository might contain other hidden folder like ".cmake", ".mm", ".ci" etc that contain configuration files for different build and CI systems.</p>
+<p>The directory structure of the ISCE3 git repository is as shown below. The repository might contain other hidden folders like ".cmake", ".mm", ".ci" etc that contain configuration files for different build and CI systems.</p>
 <pre class="fragment">.
 ├── CMakeLists.txt              (Main CMake file)
 ├── LICENSE
@@ -114,20 +114,15 @@ Source folder structure</h1>
 │   └── resampSlc.py
 ├── cxx                         (C++ code)
 │   ├── CMakeLists.txt
-│   ├── isce                        - CPU only code
-│   └── iscecuda                    - CUDA code
+│   └── isce3                       - CPU only code
+│       └── cuda                    - CUDA code
 ├── defaults                    (Pyre configurables)
 │   └── isce3.pfg
 ├── doc                         (Documentation source)
 │   ├── doxygen
-│   ├── requirements.txt
 │   └── sphinx
 ├── extern                      (External dependencies that are built with ISCE)
-│   ├── CMakeLists.txt
-│   ├── eigen3
-│   ├── googletest
-│   ├── pybind11
-│   └── pyre
+│   └── CMakeLists.txt
 ├── python                      (Python bindings for ISCE)
 │   ├── CMakeLists.txt              
 │   ├── extensions                  - C++ extensions using pybind11
@@ -140,35 +135,18 @@ Source folder structure</h1>
     ├── extern                      - External dependencies built as part of ISCE
     └── python                      - Python bindings</pre><h1><a class="anchor" id="installstructure"></a>
 Installation folder structure</h1>
-<p>ISCE tries to follow the same directory structure as used by other open source projects like GDAL, FFTW etc. Shown below are the contents of the sub-folders populated by ISCE below the installation folder.</p>
+<p>ISCE3 tries to follow the same directory structure as used by other open source projects like GDAL, FFTW etc. Shown below are the contents of the sub-folders populated by ISCE3 below the installation folder.</p>
 <pre class="fragment">.
-├── bin                         (Executables) 
-│   ├── merlin
-│   ├── pyre
-│   ├── pyre-config
-│   ├── python.pyre
-│   └── smith.pyre
-├── defaults                    (Pyre configurables)
-│   ├── merlin.pfg
-│   └── pyre.pfg
 ├── include                     (C++ headers)
 │   ├── Eigen
-│   ├── isce
-│   ├── portinfo                (pyre-specific header file)
-│   └── pyre
-├── lib                         (Shared libraries)
-│   ├── libisce.3.0.dylib
-│   ├── libjournal.dylib
-│   └── libpyre.dylib
-├── packages                    (Python packages)
-│   ├── gsl
 │   ├── isce3
-│   ├── journal
-│   ├── merlin
-│   ├── nisar
-│   └── pyre
-└── share                       (Examples/ tutorials folder)
-    └── nisar</pre> </div></div><!-- contents -->
+├── lib                         (Shared libraries)
+│   └── libisce3.0.dylib
+├── packages                    (Python packages)
+│   ├── isce3
+│   └── nisar
+└── share
+    └── nisar                   (Examples/ tutorials folder)</pre> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <hr>
 Generated for ISCE3.0 by

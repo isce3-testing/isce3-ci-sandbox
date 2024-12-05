@@ -54,7 +54,7 @@ var searchData=
   ['projections_20tutorial_51',['Map Projections Tutorial',['../d3/dcc/tutorial_projections.html',1,'']]],
   ['ptr_5fto_5fvalid_5fstart_52',['ptr_to_valid_start',['../d9/de9/classisce3_1_1cuda_1_1product_1_1OwnerSubSwaths.html#a594aa04fbf9b6533c2484959554fd4d0',1,'isce3::cuda::product::OwnerSubSwaths::ptr_to_valid_start()'],['../d9/de9/classisce3_1_1cuda_1_1product_1_1OwnerSubSwaths.html#acb34166ee1385eb0406b6defcee9ccb6',1,'isce3::cuda::product::OwnerSubSwaths::ptr_to_valid_start() const']]],
   ['ptr_5fto_5fvalid_5fstop_53',['ptr_to_valid_stop',['../d9/de9/classisce3_1_1cuda_1_1product_1_1OwnerSubSwaths.html#a2feb3d67fe7f5f9bf32e72d2f89a2459',1,'isce3::cuda::product::OwnerSubSwaths::ptr_to_valid_stop()'],['../d9/de9/classisce3_1_1cuda_1_1product_1_1OwnerSubSwaths.html#ae020a0fb014b3fb8323c77a873e29d9c',1,'isce3::cuda::product::OwnerSubSwaths::ptr_to_valid_stop() const']]],
-  ['publications_54',['Citing ISCE in publications',['../index.html#index_citing',1,'']]],
+  ['publications_54',['Citing ISCE3 in publications',['../index.html#index_citing',1,'']]],
   ['python_20documentation_55',['Python Documentation',['../d4/d19/howtodoc.html#docpy',1,'']]],
   ['python_20documentation_20using_20sphinx_56',['Building Python documentation using Sphinx',['../dd/dc9/doxygen_sphinx.html#sphinxbuild',1,'']]],
   ['python_20packages_57',['Installing Conda and Python packages',['../d9/d8e/install_linux.html#conda',1,'']]]
