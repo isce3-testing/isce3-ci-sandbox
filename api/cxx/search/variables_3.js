@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['days_0',['days',['../d1/dc4/classisce3_1_1core_1_1TimeDelta.html#abbebd12329f54dae86c22571a266865e',1,'isce3::core::TimeDelta']]],
+  ['days_0',['days',['../d1/dc4/classisce3_1_1core_1_1TimeDelta.html#abbebd12329f54dae86c22571a266865e',1,'isce3::core::TimeDelta::days'],['../d1/d32/classTimeDelta.html#abbebd12329f54dae86c22571a266865e',1,'TimeDelta::days']]],
   ['defaultgdaldatatype_1',['defaultGDALDataType',['../dc/d39/namespaceisce3_1_1io.html#a45d5e118ca1b30f23db533a3c5dea85b',1,'isce3::io']]],
   ['defaultgdaldriver_2',['defaultGDALDriver',['../dc/d39/namespaceisce3_1_1io.html#af5681afeb7e8a37b11078cd6306d53b2',1,'isce3::io']]],
   ['derampmethod_3',['derampMethod',['../d7/de2/classcuAmpcorParameter.html#a2ceee97c9598c1e1d6160edd6938d478',1,'cuAmpcorParameter::derampMethod'],['../df/db2/classisce3_1_1matchtemplate_1_1pycuampcor_1_1cuAmpcorParameter.html#acb3f3d64acd29ce3a12fc93e681c861a',1,'isce3::matchtemplate::pycuampcor::cuAmpcorParameter::derampMethod']]],

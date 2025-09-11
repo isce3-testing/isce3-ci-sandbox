@@ -12,7 +12,7 @@ var searchData=
   ['log2_3c_2064_20_3e_9',['Log2&lt; 64 &gt;',['../db/df2/structLog2_3_0164_01_4.html',1,'']]],
   ['lonlat_10',['LonLat',['../de/de8/classisce3_1_1core_1_1LonLat.html',1,'isce3::core::LonLat'],['../d0/d24/structisce3_1_1cuda_1_1core_1_1LonLat.html',1,'isce3::cuda::core::LonLat']]],
   ['looks_11',['Looks',['../d0/df6/classisce3_1_1signal_1_1Looks.html',1,'isce3::signal']]],
-  ['lut1d_12',['LUT1d',['../d5/d8c/classisce3_1_1core_1_1LUT1d.html',1,'isce3::core']]],
+  ['lut1d_12',['LUT1d',['../d5/d8c/classisce3_1_1core_1_1LUT1d.html',1,'isce3::core::LUT1d&lt; T &gt;'],['../df/d7a/classLUT1d.html',1,'LUT1d&lt; T &gt;']]],
   ['lut1d_3c_20double_20_3e_13',['LUT1d&lt; double &gt;',['../d5/d8c/classisce3_1_1core_1_1LUT1d.html',1,'isce3::core']]],
   ['lut2d_14',['LUT2d',['../d8/d4a/classisce3_1_1core_1_1LUT2d.html',1,'isce3::core']]],
   ['lut2d_3c_20double_20_3e_15',['LUT2d&lt; double &gt;',['../d8/d4a/classisce3_1_1core_1_1LUT2d.html',1,'isce3::core']]]

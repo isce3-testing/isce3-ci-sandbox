@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['a_20developer_0',['How to document code in ISCE3 as a developer?',['../d4/d19/howtodoc.html',1,'']]],
-  ['and_20sphinx_1',['Building ISCE documentation using Doxygen and Sphinx',['../dd/dc9/doxygen_sphinx.html',1,'']]],
-  ['as_20a_20developer_2',['How to document code in ISCE3 as a developer?',['../d4/d19/howtodoc.html',1,'']]]
+  ['bibliography_0',['Bibliography',['../d0/de3/citelist.html',1,'']]]
 ];

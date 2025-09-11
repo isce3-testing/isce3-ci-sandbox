@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['radcur_0',['radcur',['../d5/d89/structisce3_1_1core_1_1Pegtrans.html#a86d0aecc95345fbd59b870086526e2f8',1,'isce3::core::Pegtrans']]],
+  ['radcur_0',['radcur',['../d5/d89/structisce3_1_1core_1_1Pegtrans.html#a86d0aecc95345fbd59b870086526e2f8',1,'isce3::core::Pegtrans::radcur'],['../d7/db4/structPegtrans.html#a86d0aecc95345fbd59b870086526e2f8',1,'Pegtrans::radcur']]],
   ['rawdataoversamplingfactor_1',['rawDataOversamplingFactor',['../d7/de2/classcuAmpcorParameter.html#ae267ba28d1aabe31595003aeebd1d04c',1,'cuAmpcorParameter::rawDataOversamplingFactor'],['../df/db2/classisce3_1_1matchtemplate_1_1pycuampcor_1_1cuAmpcorParameter.html#aa4ab4bd8a22613ff25d3b022635fddeb',1,'isce3::matchtemplate::pycuampcor::cuAmpcorParameter::rawDataOversamplingFactor']]],
   ['referencechunkheight_2',['referenceChunkHeight',['../d7/de2/classcuAmpcorParameter.html#ae4848a4acabfb385300fee9fe8a36d9f',1,'cuAmpcorParameter::referenceChunkHeight'],['../df/db2/classisce3_1_1matchtemplate_1_1pycuampcor_1_1cuAmpcorParameter.html#a488a1f0a2f6c408a58aef8fff6db898b',1,'isce3::matchtemplate::pycuampcor::cuAmpcorParameter::referenceChunkHeight']]],
   ['referencechunkstartpixelacross_3',['referenceChunkStartPixelAcross',['../d7/de2/classcuAmpcorParameter.html#a64848fe74eff273fda893e37e33451e1',1,'cuAmpcorParameter::referenceChunkStartPixelAcross'],['../df/db2/classisce3_1_1matchtemplate_1_1pycuampcor_1_1cuAmpcorParameter.html#a0f98dcdad09baf12675e78f18750e854',1,'isce3::matchtemplate::pycuampcor::cuAmpcorParameter::referenceChunkStartPixelAcross']]],

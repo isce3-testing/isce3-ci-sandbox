@@ -5,7 +5,7 @@ var searchData=
   ['changedetector_2',['ChangeDetector',['../d1/d5a/classChangeDetector.html',1,'']]],
   ['chebykernel_3',['ChebyKernel',['../d5/de2/classisce3_1_1core_1_1ChebyKernel.html',1,'isce3::core::ChebyKernel&lt; T &gt;'],['../d1/d6c/classisce3_1_1cuda_1_1core_1_1ChebyKernel.html',1,'isce3::cuda::core::ChebyKernel&lt; T &gt;']]],
   ['chebykernelview_4',['ChebyKernelView',['../da/df3/classisce3_1_1cuda_1_1core_1_1ChebyKernelView.html',1,'isce3::cuda::core']]],
-  ['complex_5',['complex',['../d0/d67/structthrust_1_1complex.html',1,'thrust']]],
+  ['complex_5',['complex',['../dc/dac/structisce3_1_1fftw3cxx_1_1fftw.html',1,'isce3::fftw3cxx::complex&lt; T &gt;'],['../d0/d67/structthrust_1_1complex.html',1,'thrust::complex&lt; typename &gt;']]],
   ['complex_3c_20t_20_3e_6',['complex&lt; T &gt;',['../d0/d67/structthrust_1_1complex.html',1,'thrust']]],
   ['complx_7',['complx',['../da/dfe/structisce3_1_1complx.html',1,'isce3']]],
   ['complx_3c_20std_3a_3acomplex_3c_20t_20_3e_20_3e_8',['complx&lt; std::complex&lt; T &gt; &gt;',['../d5/d1b/structisce3_1_1complx_3_01std_1_1complex_3_01T_01_4_01_4.html',1,'isce3']]],

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['2d_20interpolation_20tutorial_0',['2D Interpolation Tutorial',['../d7/da1/tutorial_interpolate.html',1,'']]]
+  ['a_20developer_0',['How to document code in ISCE3 as a developer?',['../d4/d19/howtodoc.html',1,'']]],
+  ['as_20a_20developer_1',['How to document code in ISCE3 as a developer?',['../d4/d19/howtodoc.html',1,'']]]
 ];
