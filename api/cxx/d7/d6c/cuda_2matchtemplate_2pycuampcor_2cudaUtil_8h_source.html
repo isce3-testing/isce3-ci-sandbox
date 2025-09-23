@@ -197,23 +197,29 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">while</span> (current_device &lt; device_count)</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    {</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        checkCudaErrors(cudaGetDeviceProperties(&amp;deviceProp, current_device));</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keywordflow">if</span> (deviceProp.computeMode == cudaComputeModeProhibited)</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        {</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            fprintf(stderr, <span class="stringliteral">&quot;CUDA Device [%d]: \&quot;%s\&quot; is not available: device is running in &lt;Compute Mode Prohibited&gt; \n&quot;</span>, current_device, deviceProp.name);</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        }</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (deviceProp.major &lt; 1)</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        {</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            fprintf(stderr, <span class="stringliteral">&quot;CUDA Device [%d]: \&quot;%s\&quot; is not available: device does not support CUDA \n&quot;</span>, current_device, deviceProp.name);</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        }</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>            fprintf(stderr, <span class="stringliteral">&quot;CUDA Device [%d]: \&quot;%s\&quot; is available.\n&quot;</span>, current_device, deviceProp.name);</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        }</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        current_device++;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    }</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>}</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="preprocessor">#endif </span><span class="comment">//__CUDAUTIL_H</span></div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="comment">//end of file</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keywordtype">int</span> compute_mode;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="preprocessor">#if CUDART_VERSION &lt; 13000</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        compute_mode = deviceProp.computeMode;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        checkCudaErrors(cudaDeviceGetAttribute(&amp;compute_mode, cudaDevAttrComputeMode, current_device));</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="keywordflow">if</span> (compute_mode == cudaComputeModeProhibited)</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        {</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            fprintf(stderr, <span class="stringliteral">&quot;CUDA Device [%d]: \&quot;%s\&quot; is not available: device is running in &lt;Compute Mode Prohibited&gt; \n&quot;</span>, current_device, deviceProp.name);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        }</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (deviceProp.major &lt; 1)</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        {</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>            fprintf(stderr, <span class="stringliteral">&quot;CUDA Device [%d]: \&quot;%s\&quot; is not available: device does not support CUDA \n&quot;</span>, current_device, deviceProp.name);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        }</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>            fprintf(stderr, <span class="stringliteral">&quot;CUDA Device [%d]: \&quot;%s\&quot; is available.\n&quot;</span>, current_device, deviceProp.name);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        }</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        current_device++;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    }</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>}</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="preprocessor">#endif </span><span class="comment">//__CUDAUTIL_H</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment">//end of file</span></div>
 <div class="ttc" id="acudaError_8h_html"><div class="ttname"><a href="../../d8/db1/cudaError_8h.html">cudaError.h</a></div><div class="ttdoc">Define error checking in cuda calls.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr>
