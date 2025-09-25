@@ -50,6 +50,58 @@
 
 
 
+            <h2>API Documentation</h2>
+                <ul class="memberlist">
+            <li>
+                    <a class="class" href="#ComputeCapability">ComputeCapability</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#ComputeCapability.__init__">ComputeCapability</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ComputeCapability.major">major</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ComputeCapability.minor">minor</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Device">Device</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#Device.__init__">Device</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Device.id">id</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Device.name">name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Device.total_global_mem">total_global_mem</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Device.compute_capability">compute_capability</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="function" href="#min_compute_capability">min_compute_capability</a>
+            </li>
+            <li>
+                    <a class="function" href="#get_device_count">get_device_count</a>
+            </li>
+            <li>
+                    <a class="function" href="#get_device">get_device</a>
+            </li>
+            <li>
+                    <a class="function" href="#set_device">set_device</a>
+            </li>
+    </ul>
+
 
 
         <a class="attribution" title="pdoc: Python API documentation generator" href="https://pdoc.dev" target="_blank">
@@ -70,10 +122,228 @@
                         <label class="view-source-button" for="mod-core-view-source"><span>View Source</span></label>
 
                         <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos">1</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">isce3.ext.isce3.cuda.core</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</span><span id="L-2"><a href="#L-2"><span class="linenos">2</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">isce3.ext.isce3.cuda.core</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">extcudacore</span>
+</span><span id="L-3"><a href="#L-3"><span class="linenos">3</span></a>
+</span><span id="L-4"><a href="#L-4"><span class="linenos">4</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="n">extcudacore</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">)]</span>
 </span></pre></div>
 
 
             </section>
+                <section id="ComputeCapability">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ComputeCapability</span><wbr>(<span class="base">pybind11_builtins.pybind11_object</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ComputeCapability"></a>
+    
+    
+
+                            <div id="ComputeCapability.__init__" class="classattr">
+                                <div class="attr function">
+            
+        <span class="name">ComputeCapability</span><span class="signature pdoc-code condensed">()</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ComputeCapability.__init__"></a>
+    
+            <div class="docstring"><p>__init__(self: <a href="#ComputeCapability">isce3.ext.isce3.cuda.core.ComputeCapability</a>, major: typing.SupportsInt, minor: typing.SupportsInt) -> None</p>
+
+<p>Construct a new ComputeCapability object.</p>
+</div>
+
+
+                            </div>
+                            <div id="ComputeCapability.major" class="classattr">
+                                <div class="attr variable">
+            <span class="name">major</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ComputeCapability.major"></a>
+    
+            <div class="docstring"><p>(self: <a href="#ComputeCapability">isce3.ext.isce3.cuda.core.ComputeCapability</a>) -> int</p>
+</div>
+
+
+                            </div>
+                            <div id="ComputeCapability.minor" class="classattr">
+                                <div class="attr variable">
+            <span class="name">minor</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ComputeCapability.minor"></a>
+    
+            <div class="docstring"><p>(self: <a href="#ComputeCapability">isce3.ext.isce3.cuda.core.ComputeCapability</a>) -> int</p>
+</div>
+
+
+                            </div>
+                </section>
+                <section id="Device">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Device</span><wbr>(<span class="base">pybind11_builtins.pybind11_object</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Device"></a>
+    
+    
+
+                            <div id="Device.__init__" class="classattr">
+                                <div class="attr function">
+            
+        <span class="name">Device</span><span class="signature pdoc-code condensed">()</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Device.__init__"></a>
+    
+            <div class="docstring"><p>__init__(self: <a href="#Device">isce3.ext.isce3.cuda.core.Device</a>, id: typing.SupportsInt) -> None</p>
+
+<p>Construct a new Device object.</p>
+
+<p>Does not change the currently active CUDA device.</p>
+</div>
+
+
+                            </div>
+                            <div id="Device.id" class="classattr">
+                                <div class="attr variable">
+            <span class="name">id</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Device.id"></a>
+    
+            <div class="docstring"><p>(arg0: <a href="#Device">isce3.ext.isce3.cuda.core.Device</a>) -> int</p>
+</div>
+
+
+                            </div>
+                            <div id="Device.name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">name</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Device.name"></a>
+    
+            <div class="docstring"><p>(arg0: <a href="#Device">isce3.ext.isce3.cuda.core.Device</a>) -> str</p>
+</div>
+
+
+                            </div>
+                            <div id="Device.total_global_mem" class="classattr">
+                                <div class="attr variable">
+            <span class="name">total_global_mem</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Device.total_global_mem"></a>
+    
+            <div class="docstring"><p>(arg0: <a href="#Device">isce3.ext.isce3.cuda.core.Device</a>) -> int</p>
+</div>
+
+
+                            </div>
+                            <div id="Device.compute_capability" class="classattr">
+                                <div class="attr variable">
+            <span class="name">compute_capability</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Device.compute_capability"></a>
+    
+            <div class="docstring"><p>(arg0: <a href="#Device">isce3.ext.isce3.cuda.core.Device</a>) -> <a href="#ComputeCapability">isce3.ext.isce3.cuda.core.ComputeCapability</a></p>
+</div>
+
+
+                            </div>
+                </section>
+                <section id="min_compute_capability">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">min_compute_capability</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#min_compute_capability"></a>
+    
+            <div class="docstring"><p>min_compute_capability() -> <a href="#ComputeCapability">isce3.ext.isce3.cuda.core.ComputeCapability</a></p>
+</div>
+
+
+                </section>
+                <section id="get_device_count">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">get_device_count</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#get_device_count"></a>
+    
+            <div class="docstring"><p>get_device_count() -> int</p>
+
+<p>Return the number of available CUDA devices.</p>
+</div>
+
+
+                </section>
+                <section id="get_device">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">get_device</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#get_device"></a>
+    
+            <div class="docstring"><p>get_device() -> <a href="#Device">isce3.ext.isce3.cuda.core.Device</a></p>
+
+<p>Get the current CUDA device for the active host thread.</p>
+</div>
+
+
+                </section>
+                <section id="set_device">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">set_device</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#set_device"></a>
+    
+            <div class="docstring"><p>set_device(<em>args, *</em>kwargs)
+Overloaded function.</p>
+
+<ol>
+<li>set_device(device: <a href="#Device">isce3.ext.isce3.cuda.core.Device</a>) -> None</li>
+</ol>
+
+<p>Set the CUDA device for the active host thread.</p>
+
+<ol start="2">
+<li>set_device(device: typing.SupportsInt) -> None</li>
+</ol>
+
+<p>Set the CUDA device for the active host thread.</p>
+</div>
+
+
+                </section>
     </main>
 <script>
     function escapeHTML(html) {
